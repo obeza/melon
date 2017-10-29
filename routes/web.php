@@ -16,5 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@index']);
+Route::post('/login', 'Auth\LoginController@loginPost');
 
 Route::resource('user', 'UserController');

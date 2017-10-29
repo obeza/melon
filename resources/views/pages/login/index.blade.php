@@ -26,7 +26,7 @@
                   {{ $errors->first('password') }}
                 </div>
               </div>
-              @if ( session('wrongPassMail'))
+              @if ( $wrongPassMail)
               <div class="alert alert-danger" role="alert">
                 Login ou mot de passe invalide
               </div>

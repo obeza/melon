@@ -7,6 +7,12 @@ use App\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        //protége la class avec l'authentification
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *

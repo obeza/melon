@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Http\Request;
+use Auth;
+use App\User;
 class LoginController extends Controller
 {
     /*
@@ -41,9 +43,36 @@ class LoginController extends Controller
     // affichage du formulaire login
     //
     public function index(){
-        return view('pages.login.index', [
-            'error' => true
-        ]);
+        return view('pages.login.index');
     }
+    
+    //
+    // tentative de connection
+    //
+    public function loginPost(Request $request){
+        
+        $validatedData = $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+        
+        //
+        // on authentifie avec seulement si actif
+        //
+         if (Auth::attempt([
+            'email' => $request->email, 
+            'password' => $request->password, 
+            'actif' => true
+        ])) {
+            // Authentication passed...
+            
+            return redirect()->intended('home');
+        }
 
+        //return view('login.index', ['wrongPassMail' => true]);
+        //
+        // on renvoit à la page login avec le message d'alerte 
+        //
+        return view('pages.login.index')->with('wrongPassMail' , true);
+    }
 }
