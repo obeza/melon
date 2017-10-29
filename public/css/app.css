@@ -9717,3 +9717,7 @@ a.text-dark:hover {
   visibility: hidden !important;
 }
 
+.main.container {
+  margin-top: 80px;
+}
+

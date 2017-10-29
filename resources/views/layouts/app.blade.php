@@ -10,8 +10,10 @@
 
   </head>
   <body>
-
-    <div class="container">
+    @auth
+      @include('layouts._nav')
+    @endauth
+    <div class="main container">
       
         
           
