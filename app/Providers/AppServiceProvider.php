@@ -16,10 +16,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Blade::directive('isValid', function ($expression) {
-            if ($expression)
-                return "return true";
+            if (!$expression)
+                return "is-invalid";
             else
-                return "return false";
+                return "";
         });
     }
 
