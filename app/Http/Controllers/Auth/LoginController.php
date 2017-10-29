@@ -41,7 +41,9 @@ class LoginController extends Controller
     // affichage du formulaire login
     //
     public function index(){
-        return view('pages.login.index');
+        return view('pages.login.index', [
+            'error' => true
+        ]);
     }
 
 }
