@@ -36,4 +36,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    //
+    // affichage du formulaire login
+    //
+    public function index(){
+        return view('pages.login.index');
+    }
+
 }
