@@ -12,7 +12,7 @@ class GroupeTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('groupe')->insert([
+        DB::table('user_groupes')->insert([
             ['role' => 'superAdmin'],
             ['role' => 'administrateur'],
             ['role' => 'utilisateur']

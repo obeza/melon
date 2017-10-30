@@ -13,9 +13,10 @@ class CreateUserInvitationTable extends Migration
      */
     public function up()
     {
-        Schema::create('UserInvitation', function (Blueprint $table) {
+        Schema::create('user_invitations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->string('email');
+            $table->integer('groupe');
             $table->string('token');
             $table->timestamps();
         });

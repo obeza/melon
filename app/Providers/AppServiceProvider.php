@@ -15,12 +15,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        Blade::directive('isValid', function ($expression) {
-            if (!$expression)
-                return "is-invalid";
-            else
-                return "";
-        });
     }
 
     /**
