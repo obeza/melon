@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getNameAttribute()
+    {
+        return "{$this->prenom} {$this->nom}";
+    }
+
+    public function setNameAttribute()
+    {
+        $this->attributes['name'] = "-->{$this->prenom} {$this->nom}";
+    }
+
 }

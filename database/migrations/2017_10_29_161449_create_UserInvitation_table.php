@@ -15,6 +15,7 @@ class CreateUserInvitationTable extends Migration
     {
         Schema::create('user_invitations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->string('email');
             $table->integer('groupe');
             $table->string('token');

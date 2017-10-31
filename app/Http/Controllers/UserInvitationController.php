@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\UserInvitation;
 use App\UserGroupe;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Welcome;
+use Illuminate\Support\Facades\Auth;
 class UserInvitationController extends Controller
 {
     /**
@@ -16,6 +18,7 @@ class UserInvitationController extends Controller
     public function index()
     {
         //
+        return "liste des users";
     }
 
     /**
@@ -44,18 +47,21 @@ class UserInvitationController extends Controller
     {
         //
         $validatedData = $request->validate([
+            'name' => 'required',
             'email' => 'required|email',
             'groupe' => 'required'
         ]);
 
         $token = bin2hex(random_bytes(32));
-        
-        $invitation = new UserInvitation;
-        $invitation->email = $request->email;
-        $invitation->groupe = $request->groupe;
-        $invitation->token = $token;
 
-        $invitation->save();
+        UserInvitation::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'groupe' => $request->groupe,
+            'token' => $token
+        ]);
+
+        Mail::to($request->email)->send(new Welcome);
 
         return $request;
     }

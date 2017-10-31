@@ -14,17 +14,11 @@
               <div class="form-group">
                 <label for="inputEmail">Email :</label>
                 
-                <input type="email" class="form-control @isValid($errors->first('email'))" id="inputEmail" placeholder="Entrer votre email" name="email" required>
-                <div class="invalid-feedback">
-                {{ $errors->first('email') }}
-              </div> 
+                <input type="email" class="form-control" id="inputEmail" placeholder="Entrer votre email" name="email" required>               
               </div>
               <div class="form-group">
                 <label for="inputPass">Mot de passe :</label>
-                <input type="password" class="form-control @isValid($errors->first('password'))" id="inputPass" placeholder="Mot de passe" name="password" required>
-                <div class="invalid-feedback">
-                  {{ $errors->first('password') }}
-                </div>
+                <input type="password" class="form-control" id="inputPass" placeholder="Mot de passe" name="password" required>
               </div>
               @if ( $wrongPassMail)
               <div class="alert alert-danger" role="alert">

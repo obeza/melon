@@ -9,6 +9,20 @@
         <form method="POST" action="/user/invitation">
           {{ csrf_field() }}
           <div class="form-group">
+            <label for="inputName">Nom</label>
+            <input 
+              type="text" 
+              class="form-control  @if ($errors->has('name')) is-invalid @endif" 
+              id="inputName" 
+              placeholder="Entrer un nom"
+              name="name"
+              value="{{ old('name', $invitation->name ) }}"
+            >
+            <div class="invalid-feedback">
+              {{ $errors->first('name') }}
+            </div>
+          </div>
+          <div class="form-group">
             <label for="inputEmail">Email</label>
             <input 
               type="text" 
@@ -18,7 +32,7 @@
               name="email"
               value="{{ old('email', $invitation->email ) }}"
             >
-            <div class="invalid-feedback">
+              <div class="invalid-feedback">
                 {{ $errors->first('email') }}
               </div>
           </div>
@@ -36,6 +50,19 @@
         </form>
       </div> <!-- end card body -->
     </div> <!-- end card -->
+
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
   </div> <!-- end col -->
 </div> <!-- end row -->
 @endsection
